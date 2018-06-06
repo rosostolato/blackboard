@@ -1,0 +1,33 @@
+@import 'bootstrap/scss/bootstrap.scss';
+
+body {
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-size: 14px;
+  min-width: 320px;
+}
+
+h1 {
+  font-size: 32px;
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: 300;
+  color: #262626;
+}
+
+h3 {
+  font-size: 20px;
+}
+
+h4 {
+  font-size: 18px;
+}
+
+h5 {
+  font-size: 15px;
+}
+
+p {
+  color: grey;
+}
