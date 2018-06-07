@@ -10,15 +10,29 @@ import { Materia } from '../models/materia';
 })
 export class PeriodTableComponent implements OnInit {
   @Input() period: Period;
+  draggable: boolean;
 
-  constructor() { }
+  constructor() {
+    this.draggable = false;
+  }
 
   ngOnInit() {
   }
 
   onDrop(drop: DropData) {
     const materia: Materia = drop.dropData;
+
     materia.placed = true;
+    this.draggable = false;
+
     this.period.push(materia);
+  }
+
+  onDragEnter() {
+    this.draggable = true;
+  }
+
+  onDragLeave() {
+    this.draggable = false;
   }
 }

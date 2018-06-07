@@ -26,4 +26,8 @@
 .period-table {
   border: 1px solid #CCC;
   margin-bottom: 50px;
+
+  .draggable {
+    border: 1px solid green;
+  }
 }
