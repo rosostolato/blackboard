@@ -17,6 +17,8 @@ export class Materia {
   parents: Materia[];
   children: Materia[];
 
+  placed: boolean;
+
   constructor (obj: IMateriaParsed) {
     this.name = obj.name;
     this.id = parseInt(obj.id, null);
@@ -25,6 +27,7 @@ export class Materia {
 
     this.parents = [];
     this.children = [];
+    this.placed = false;
   }
 }
 

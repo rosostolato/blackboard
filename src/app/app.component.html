@@ -41,7 +41,7 @@
 
   <div *ngIf="materias" class="row">
     <div class="col-6">
-      <app-period-table *ngFor="let period of periods"></app-period-table>
+      <app-period-table [period]="period" *ngFor="let period of periods"></app-period-table>
     </div>
     <app-materias-table [materias]="materias" class="col-6"></app-materias-table>
   </div>

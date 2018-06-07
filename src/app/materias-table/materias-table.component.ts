@@ -14,4 +14,9 @@ export class MateriasTableComponent implements OnInit {
   ngOnInit() {
   }
 
+  onDragStart(index: number) {
+    if (this.materias[index].placed) {
+      this.materias.splice(index, 1);
+    }
+  }
 }
