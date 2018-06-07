@@ -39,7 +39,10 @@
     Clique ou arraste seu template de matérias
   </div>
 
-  <div *ngIf="materias">
-    <app-period-table *ngFor="let period of periods"></app-period-table>
+  <div *ngIf="materias" class="row">
+    <div class="col-6">
+      <app-period-table *ngFor="let period of periods"></app-period-table>
+    </div>
+    <app-materias-table [materias]="materias" class="col-6"></app-materias-table>
   </div>
 </div>

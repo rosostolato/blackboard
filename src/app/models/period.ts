@@ -1,7 +1,15 @@
-import { MateriaCollection } from './materia';
+import { Materia, MateriaCollection } from './materia';
 import * as _ from 'lodash';
 
-export class Period {
+export class Period extends Array<Materia> {
+  date: string;
+
+  constructor () {
+    super();
+
+    Object.setPrototypeOf(this,
+      _.extend(Period.prototype, Array.prototype));
+  }
 }
 
 export class PeriodCollection extends Array<Period> {
