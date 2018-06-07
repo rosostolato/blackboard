@@ -32,10 +32,14 @@
     <h2>Organize a sua grade escolar e sua dependência de matérias</h2>
   </div>
 
-  <div
+  <div *ngIf="!materias"
     ngxFilequake class="dropzone"
     [zoneonly]="true" [canclick]="true"
     dialogaccept=".csv" (filesChanged)="onUpload($event)">
     Clique ou arraste seu template de matérias
+  </div>
+
+  <div *ngIf="materias">
+    <app-period-table *ngFor="let period of periods"></app-period-table>
   </div>
 </div>
