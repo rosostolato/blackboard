@@ -65,7 +65,17 @@ export class Period extends Array<Materia> {
   date: PeriodDate;
 
   constructor (lastPeriod?: Period) {
-    super();
+    let number = 0;
+
+    if (_.isNumber(lastPeriod)) {
+      number = lastPeriod;
+    }
+
+    super(number);
+
+    if (number) {
+      return;
+    }
 
     Object.setPrototypeOf(this,
       _.extend(Period.prototype, Array.prototype));
@@ -85,6 +95,7 @@ export class PeriodCollection extends Array<Period> {
       const period = new Period(i ? arr[i - 1] : null);
       arr.push(period);
     });
+
     super(...arr);
 
     Object.setPrototypeOf(this,

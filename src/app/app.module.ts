@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { PapaParseModule } from 'ngx-papaparse';
 import { NgxFilequakeModule } from '@ebcoder/ngx-filequake';
 import { DragAndDropModule } from 'angular-draggable-droppable';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 import { AppComponent } from './app.component';
 import { PeriodTableComponent } from './period-table/period-table.component';
@@ -19,7 +20,8 @@ import { MateriasTableComponent } from './materias-table/materias-table.componen
     BrowserModule,
     PapaParseModule,
     NgxFilequakeModule,
-    DragAndDropModule.forRoot()
+    DragAndDropModule.forRoot(),
+    AngularFontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

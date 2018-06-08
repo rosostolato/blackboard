@@ -76,4 +76,8 @@ export class MateriaCollection extends Array<Materia> {
       .reduce((a, b) => b.period > a.period ? b : a)
       .period;
   }
+
+  public sortById() {
+    this.sort((a, b) => a.id - b.id);
+  }
 }

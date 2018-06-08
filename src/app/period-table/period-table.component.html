@@ -20,6 +20,9 @@
     <tr *ngFor="let mat of period">
       <td style="width: 50px">{{ mat.period }}</td>
       <td>{{ mat.name }}</td>
+      <td class="actions">
+        <fa name="trash" class="remove" (click)="onRemove(mat)"></fa>
+      </td>
     </tr>
   </tbody>
 </table>

@@ -34,7 +34,14 @@ export class PeriodTableComponent implements OnInit {
     this.draggable = materia.canDrop;
   }
 
-  onDragLeave() {
+  onDragLeave(drop: DropData) {
     this.draggable = null;
+  }
+
+  onRemove(materia: Materia) {
+    const index = this.period.indexOf(materia);
+    this.period.splice(index, 1);
+
+    materia.event.next('removed');
   }
 }

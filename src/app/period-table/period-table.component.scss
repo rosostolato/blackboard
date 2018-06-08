@@ -36,4 +36,13 @@
     border: 1px solid red;
     box-shadow: 0 8px 16px 0 rgba(138, 0, 0, 0.2);
   }
+
+  .actions {
+    width: 50px;
+
+    .remove {
+      color: #666;
+      cursor: pointer;
+    }
+  }
 }

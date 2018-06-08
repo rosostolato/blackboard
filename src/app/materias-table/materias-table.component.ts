@@ -20,6 +20,7 @@ export class MateriasTableComponent implements OnInit {
 
           case 'removed':
           arr.push(mat);
+          this.materiaList.sortById();
           break;
         }
       });

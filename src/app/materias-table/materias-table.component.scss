@@ -1,8 +1,9 @@
 .materias-container {
+  position: absolute;
   overflow: auto;
-  position: fixed;
-  top: 190px;
-  bottom: 20px;
+  height: 100vh;
+  width: 100%;
+  top: 0;
 }
 
 .materias-table {
