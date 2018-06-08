@@ -20,15 +20,18 @@ export class PeriodTableComponent implements OnInit {
   onDrop(drop: DropData) {
     const materia: Materia = drop.dropData;
 
-    materia.event.next('placed');
+    if (materia.canDrop) {
+      materia.event.next('placed');
+      this.period.push(materia);
+    }
 
-    this.period.push(materia);
     this.draggable = null;
   }
 
   onDragEnter(drop: DropData) {
     const materia: Materia = drop.dropData;
-    this.draggable = this.periodList.checkRequired(materia, this.period);
+    materia.canDrop = this.periodList.checkRequired(materia, this.period);
+    this.draggable = materia.canDrop;
   }
 
   onDragLeave() {

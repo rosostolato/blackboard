@@ -20,6 +20,7 @@ export class Materia {
 
   // observable
   event = new Subject<string>();
+  canDrop = false;
 
   constructor (obj: IMateriaParsed) {
     this.name = obj.name;
