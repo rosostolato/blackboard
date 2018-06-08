@@ -34,6 +34,11 @@ export class AppComponent {
     this.periods = new PeriodCollection(this.materias);
   }
 
+  /**
+   * Temporário:
+   * Este preload serve para carregar automaticamente
+   * o arquvio de csv com os dados das matérias
+   */
   private preLoad() {
     const str = `id;period;name;required
     1;1;Química;

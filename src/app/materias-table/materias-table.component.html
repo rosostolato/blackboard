@@ -8,7 +8,7 @@
   </thead>
   <tbody>
     <tr *ngFor="let mat of materias; let i = index"
-        mwlDraggable [dropData]="mat" (dragEnd)="onDragEnd(i)">
+        mwlDraggable [dropData]="mat" (dragEnd)="this.onDragEnd(i)">
       <td class="drag-icon">
         <div></div>
         <div></div>
