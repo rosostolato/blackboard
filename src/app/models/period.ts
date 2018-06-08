@@ -13,18 +13,14 @@ export class Period extends Array<Materia> {
 }
 
 export class PeriodCollection extends Array<Period> {
-  materias: MateriaCollection;
-
-  constructor (materias: MateriaCollection, count?: number) {
+  constructor (count: number) {
     const arr = _
-      .range(0, count || materias.periods)
+      .range(0, count)
       .map(i => new Period());
     super(...arr);
 
     Object.setPrototypeOf(this,
       _.extend(PeriodCollection.prototype, Array.prototype));
-
-    this.materias = materias;
   }
 
   public checkRequired(materia: Materia, currentPeriod: Period): boolean {

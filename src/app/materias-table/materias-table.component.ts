@@ -7,10 +7,10 @@ import { MateriaCollection } from '../models/materia';
   styleUrls: ['./materias-table.component.scss']
 })
 export class MateriasTableComponent implements OnInit {
-  @Input() materias: MateriaCollection;
+  @Input() materiaList: MateriaCollection;
 
   ngOnInit() {
-    this.materias.forEach((mat, index, arr) => {
+    this.materiaList.forEach((mat, index, arr) => {
       mat.event.subscribe(event => {
         switch (event) {
           case 'placed':

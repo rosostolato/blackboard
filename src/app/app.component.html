@@ -1,3 +1,4 @@
+<!-- Navbar -->
 <nav class="navbar navbar-expand-sm navbar-light bg-light border-bottom">
   <div class="container">
     <a class="navbar-brand text-success font-weight-bold" href="#">Blackboard</a>
@@ -32,20 +33,22 @@
     <h2>Organize a sua grade escolar e sua dependência de matérias</h2>
   </div>
 
-  <div *ngIf="!materias"
+  <!-- DropZone -->
+  <div *ngIf="!materiaList"
     ngxFilequake class="dropzone"
     [zoneonly]="true" [canclick]="true"
     dialogaccept=".csv" (filesChanged)="onUpload($event)">
     Clique ou arraste seu template de matérias
   </div>
 
-  <div *ngIf="materias" class="row">
+  <!-- Main Program -->
+  <div *ngIf="materiaList" class="row">
     <div class="col-6">
       <app-period-table
-        *ngFor="let period of periods"
-        [period]="period" [periods]="periods">
+        *ngFor="let period of periodList"
+        [period]="period" [periodList]="periodList">
       </app-period-table>
     </div>
-    <app-materias-table [materias]="materias" class="col-6"></app-materias-table>
+    <app-materias-table [materiaList]="materiaList" class="col-6"></app-materias-table>
   </div>
 </div>

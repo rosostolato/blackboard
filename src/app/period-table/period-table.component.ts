@@ -10,7 +10,7 @@ import { Materia } from '../models/materia';
 })
 export class PeriodTableComponent implements OnInit {
   @Input() period: Period;
-  @Input() periods: PeriodCollection;
+  @Input() periodList: PeriodCollection;
 
   draggable: boolean = null;
 
@@ -28,7 +28,7 @@ export class PeriodTableComponent implements OnInit {
 
   onDragEnter(drop: DropData) {
     const materia: Materia = drop.dropData;
-    this.draggable = this.periods.checkRequired(materia, this.period);
+    this.draggable = this.periodList.checkRequired(materia, this.period);
   }
 
   onDragLeave() {

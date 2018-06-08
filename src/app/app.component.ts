@@ -10,8 +10,8 @@ import { PeriodCollection } from './models/period';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  materias: MateriaCollection;
-  periods: PeriodCollection;
+  materiaList: MateriaCollection;
+  periodList: PeriodCollection;
 
   constructor (private papa: Papa) {
     this.preLoad();
@@ -30,8 +30,8 @@ export class AppComponent {
 
   private onLoad(results) {
     const objects: IMateriaParsed[] = results.data;
-    this.materias = new MateriaCollection(objects);
-    this.periods = new PeriodCollection(this.materias);
+    this.materiaList = new MateriaCollection(objects);
+    this.periodList = new PeriodCollection(this.materiaList.periods);
   }
 
   /**
