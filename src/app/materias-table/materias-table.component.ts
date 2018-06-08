@@ -14,7 +14,8 @@ export class MateriasTableComponent implements OnInit {
       mat.event.subscribe(event => {
         switch (event) {
           case 'placed':
-          arr.splice(index, 1);
+          const i = arr.indexOf(mat);
+          arr.splice(i, 1);
           break;
 
           case 'removed':

@@ -1,3 +1,10 @@
+.materias-container {
+  overflow: auto;
+  position: fixed;
+  top: 190px;
+  bottom: 20px;
+}
+
 .materias-table {
   tr {
     background: white;
