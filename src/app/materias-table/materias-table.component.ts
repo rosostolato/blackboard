@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { MateriaCollection, Materia } from '../models/materia';
+import { NgbTooltip } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-materias-table',
@@ -34,7 +35,13 @@ export class MateriasTableComponent implements OnInit {
       : mat.period;
   }
 
-  preHover(event: MouseEvent) {
-    debugger;
+  preEvent(event: string, pre: NgbTooltip, mat: Materia) {
+    if (event === 'over' && mat.parents.length) {
+      pre.open();
+    }
+
+    if (event === 'leave') {
+      pre.close();
+    }
   }
 }

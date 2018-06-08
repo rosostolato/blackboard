@@ -11,3 +11,11 @@ $fa-font-path: "font-awesome/fonts";
 fa {
   color: #777;
 }
+
+.tooltip {
+  .tooltip-inner {
+    color: black;
+    background: white;
+    border: 1px solid #777
+  }
+}

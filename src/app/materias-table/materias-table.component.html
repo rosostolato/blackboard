@@ -15,8 +15,16 @@
         <td><fa name="bars"></fa></td>
         <td>{{ parsePeriod(i, mat) }}</td>
         <td>{{ mat.name }}</td>
-        <td class="actions">
-          <fa name="list" (mouseover)="preHover($event)"></fa>
+        <td (mouseover)="preEvent('over', pre, mat)" (mouseleave)="preEvent('leave', pre, mat)">
+          <ng-template #requireds>
+            <span>Pré-requisitos:</span><br />
+            <div *ngFor="let req of mat.parents">{{ req.name }}<br /></div>
+          </ng-template>
+          <fa
+            name="circle" #pre="ngbTooltip"
+            container="body" placement="right"
+            [ngbTooltip]="requireds" triggers="manual:mouseleave">
+          </fa>
         </td>
       </tr>
     </tbody>

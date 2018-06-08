@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { PapaParseModule } from 'ngx-papaparse';
 import { NgxFilequakeModule } from '@ebcoder/ngx-filequake';
@@ -17,11 +18,12 @@ import { MateriasTableComponent } from './materias-table/materias-table.componen
     MateriasTableComponent
   ],
   imports: [
+    NgbModule.forRoot(),
     BrowserModule,
     PapaParseModule,
     NgxFilequakeModule,
-    DragAndDropModule.forRoot(),
-    AngularFontAwesomeModule
+    AngularFontAwesomeModule,
+    DragAndDropModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
