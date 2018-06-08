@@ -1,4 +1,4 @@
-#materias-container {
+.materias-container {
   position: -webkit-sticky;
   position:    -moz-sticky;
   position:     -ms-sticky;
@@ -12,11 +12,17 @@
 }
 
 .materias-table {
+  border: 1px solid #CCC;
+
   tr {
     background: white;
 
     &.period-row {
       background: rgb(245, 245, 245);
     }
+  }
+
+  .actions {
+
   }
 }

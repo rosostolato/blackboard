@@ -33,4 +33,8 @@ export class MateriasTableComponent implements OnInit {
         ? mat.period : null)
       : mat.period;
   }
+
+  preHover(event: MouseEvent) {
+    debugger;
+  }
 }

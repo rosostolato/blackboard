@@ -1,6 +1,6 @@
 .period-table-header {
-  background-color: #EEE;
-  border: 1px solid #AAA;
+  background-color: rgb(245, 245, 245);
+  border: 1px solid #CCC;
   height: 40px;
   padding-right: 30px;
   justify-content: flex-end;
@@ -41,7 +41,6 @@
     width: 50px;
 
     .remove {
-      color: #666;
       cursor: pointer;
     }
   }

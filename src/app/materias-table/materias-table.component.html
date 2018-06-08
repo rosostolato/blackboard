@@ -1,10 +1,11 @@
-<div id="materias-container">
+<div class="materias-container">
   <table class="table materias-table">
     <thead>
       <tr>
         <th></th>
         <th>Período</th>
         <th>Disciplinas</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -14,6 +15,9 @@
         <td><fa name="bars"></fa></td>
         <td>{{ parsePeriod(i, mat) }}</td>
         <td>{{ mat.name }}</td>
+        <td class="actions">
+          <fa name="list" (mouseover)="preHover($event)"></fa>
+        </td>
       </tr>
     </tbody>
   </table>
