@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { MateriaCollection } from '../models/materia';
+import { MateriaCollection, Materia } from '../models/materia';
 
 @Component({
   selector: 'app-materias-table',
@@ -25,5 +25,12 @@ export class MateriasTableComponent implements OnInit {
         }
       });
     });
+  }
+
+  parsePeriod(index: number, mat: Materia) {
+    return index ?
+      (mat.period !== this.materiaList[index - 1].period
+        ? mat.period : null)
+      : mat.period;
   }
 }

@@ -1,5 +1,10 @@
-.materias-container {
-  position: absolute;
+#materias-container {
+  position: -webkit-sticky;
+  position:    -moz-sticky;
+  position:     -ms-sticky;
+  position:      -o-sticky;
+  position:         sticky;
+
   overflow: auto;
   height: 100vh;
   width: 100%;
@@ -9,14 +14,9 @@
 .materias-table {
   tr {
     background: white;
-  }
-}
 
-.drag-icon {
-  div {
-    width: 15px;
-    height: 2px;
-    background-color: black;
-    margin: 3px 0;
+    &.period-row {
+      background: rgb(245, 245, 245);
+    }
   }
 }

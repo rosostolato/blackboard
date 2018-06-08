@@ -1,4 +1,4 @@
-<div class="materias-container">
+<div id="materias-container">
   <table class="table materias-table">
     <thead>
       <tr>
@@ -9,13 +9,10 @@
     </thead>
     <tbody>
       <tr *ngFor="let mat of materiaList; let i = index"
-          mwlDraggable [dropData]="mat">
-        <td class="drag-icon">
-          <div></div>
-          <div></div>
-          <div></div>
-        </td>
-        <td>{{ i ? (mat.period !== materiaList[i-1].period ? mat.period : '') : mat.period }}</td>
+          mwlDraggable [dropData]="mat"
+          [ngClass]="{ 'period-row': parsePeriod(i, mat) }">
+        <td><fa name="bars"></fa></td>
+        <td>{{ parsePeriod(i, mat) }}</td>
         <td>{{ mat.name }}</td>
       </tr>
     </tbody>
