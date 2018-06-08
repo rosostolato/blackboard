@@ -1,4 +1,5 @@
 import * as _ from 'lodash';
+import { Subject } from 'rxjs';
 
 export interface IMateriaParsed {
   id: string;
@@ -14,20 +15,17 @@ export class Materia {
   required: number[];
 
   // meta
-  parents: Materia[];
-  children: Materia[];
+  parents: Materia[] = [];
+  children: Materia[] = [];
 
-  placed: boolean;
+  // observable
+  event = new Subject<string>();
 
   constructor (obj: IMateriaParsed) {
     this.name = obj.name;
     this.id = parseInt(obj.id, null);
     this.period = parseInt(obj.period, null);
     this.required = JSON.parse(`[${obj.required}]`);
-
-    this.parents = [];
-    this.children = [];
-    this.placed = false;
   }
 }
 

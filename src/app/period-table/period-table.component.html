@@ -6,10 +6,13 @@
 
 <table class="table period-table">
   <tbody mwlDroppable
-    [ngClass]="{ draggable: draggable }"
+    [ngClass]="{
+      'draggable': draggable === true,
+      'not-draggable': draggable === false
+    }"
     (drop)="onDrop($event)"
-    (dragEnter)="onDragEnter()"
-    (dragLeave)="onDragLeave()">
+    (dragEnter)="onDragEnter($event)"
+    (dragLeave)="onDragLeave($event)">
     <tr *ngIf="!period.length">
       <td>Arraste sua matéria aqui</td>
     </tr>

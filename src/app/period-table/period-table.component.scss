@@ -29,5 +29,11 @@
 
   .draggable {
     border: 1px solid green;
+    box-shadow: 0 8px 16px 0 rgba(0, 138, 0, 0.2);
+  }
+
+  .not-draggable {
+    border: 1px solid red;
+    box-shadow: 0 8px 16px 0 rgba(138, 0, 0, 0.2);
   }
 }

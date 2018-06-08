@@ -26,4 +26,18 @@ export class PeriodCollection extends Array<Period> {
 
     this.materias = materias;
   }
+
+  public checkRequired(materia: Materia, currentPeriod: Period): boolean {
+    if (!materia.parents.length) {
+      return true;
+    }
+
+    return materia.parents.every(mat => {
+      return this.some(period => {
+        if (true) { // period.date !== currentPeriod.date) {
+          return period.indexOf(mat) > -1;
+        }
+      });
+    });
+  }
 }
