@@ -1,32 +1,35 @@
 <div class="materias-container">
-  <table class="table materias-table">
-    <thead>
-      <tr>
-        <th></th>
-        <th>Período</th>
-        <th>Disciplinas</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let mat of materiaList; let i = index"
-          mwlDraggable [dropData]="mat"
-          [ngClass]="{ 'period-row': parsePeriod(i, mat) }">
-        <td><fa name="bars"></fa></td>
-        <td>{{ parsePeriod(i, mat) }}</td>
-        <td>{{ mat.name }}</td>
-        <td (mouseover)="preEvent('over', pre, mat)" (mouseleave)="preEvent('leave', pre, mat)">
-          <ng-template #requireds>
-            <span>Pré-requisitos:</span><br />
-            <div *ngFor="let req of mat.parents">{{ req.name }}<br /></div>
-          </ng-template>
-          <fa
-            name="circle" #pre="ngbTooltip"
-            container="body" placement="right"
-            [ngbTooltip]="requireds" triggers="manual:mouseleave">
-          </fa>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <mat-list>
+    <div *ngFor="let period of materiaList.groupByPeriod(); trackBy: trackBy">
+      <p matSubheader>{{ period.periods }}º Período</p>
+      <mat-list-item
+        class="row" dragActiveClass="ghost-drag"
+        *ngFor="let mat of period"
+        mwlDraggable [dropData]="mat">
+        <fa name="bars" class="col-lg-1 col-2"></fa>
+        <span class="col-lg-10 col-8">{{ mat.name }}</span>
+
+        <ng-template #requireds>
+          <div *ngIf="mat.parents.length">
+            <span>Pré-requisitos:</span><br>
+            <div *ngFor="let req of mat.parents">{{ req.name }}<br></div>
+          </div>
+          <div *ngIf="mat.children.length">
+            <span>Pós-requisitos:</span><br>
+            <div *ngFor="let req of mat.children">{{ req.name }}<br></div>
+          </div>
+        </ng-template>
+
+        <div class="col-lg-1 col-2 text-center"
+          container="body" placement="right" #tip="ngbTooltip"
+          [ngbTooltip]="requireds" triggers="manual"
+          (mouseover)="mouseEvent('over', tip, mat)"
+          (mouseleave)="mouseEvent('leave', tip, mat)"
+          *ngIf="mat.parents.length || mat.children.length">
+
+          <fa name="circle"></fa>
+        </div>
+      </mat-list-item>
+    </div>
+  </mat-list>
 </div>

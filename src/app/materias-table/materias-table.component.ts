@@ -9,6 +9,7 @@ import { NgbTooltip } from '@ng-bootstrap/ng-bootstrap';
 })
 export class MateriasTableComponent implements OnInit {
   @Input() materiaList: MateriaCollection;
+  periods: MateriaCollection[];
 
   ngOnInit() {
     this.materiaList.forEach((mat, index, arr) => {
@@ -26,6 +27,12 @@ export class MateriasTableComponent implements OnInit {
         }
       });
     });
+
+    this.periods = this.materiaList.groupByPeriod();
+  }
+
+  trackBy(index: number) {
+    return index;
   }
 
   parsePeriod(index: number, mat: Materia) {
@@ -35,13 +42,17 @@ export class MateriasTableComponent implements OnInit {
       : mat.period;
   }
 
-  preEvent(event: string, pre: NgbTooltip, mat: Materia) {
-    if (event === 'over' && mat.parents.length) {
-      pre.open();
+  mouseEvent(event: string, tip: NgbTooltip, mat: Materia) {
+    if (!mat.parents.length && !mat.children.length) {
+      return false;
+    }
+
+    if (event === 'over') {
+      tip.open();
     }
 
     if (event === 'leave') {
-      pre.close();
+      tip.close();
     }
   }
 }

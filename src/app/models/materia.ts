@@ -33,14 +33,18 @@ export class Materia {
 export class MateriaCollection extends Array<Materia> {
   public periods: number;
 
-  constructor (objArr?: IMateriaParsed[]) {
+  constructor (objArr?: Materia[] | IMateriaParsed[]) {
     super();
 
     Object.setPrototypeOf(this,
       _.extend(MateriaCollection.prototype, Array.prototype));
 
     if (Array.isArray(objArr)) {
-      this.add(objArr);
+      if (objArr[0] instanceof Materia) {
+        this.push(...<Materia[]>objArr);
+      } else {
+        this.add(<IMateriaParsed[]>objArr);
+      }
     }
   }
 
@@ -79,5 +83,20 @@ export class MateriaCollection extends Array<Materia> {
 
   public sortById() {
     this.sort((a, b) => a.id - b.id);
+  }
+
+  public toArray() {
+    return new Array(...this);
+  }
+
+  public groupByPeriod() {
+    return _(this.toArray())
+      .groupBy(x => x.period)
+      .map((materias, key) => {
+        const buf = new MateriaCollection(materias);
+        buf.periods = parseInt(key, null);
+        return buf;
+      })
+      .valueOf();
   }
 }
