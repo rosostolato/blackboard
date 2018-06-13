@@ -83,7 +83,7 @@ export class Period extends Array<Materia> {
     if (lastPeriod) {
       this.date = lastPeriod.date.addSemester();
     } else {
-      this.date = new PeriodDate('2018.1');
+      this.date = new PeriodDate('2017.1');
     }
   }
 }
@@ -102,7 +102,7 @@ export class PeriodCollection extends Array<Period> {
       _.extend(PeriodCollection.prototype, Array.prototype));
   }
 
-  public checkRequired(materia: Materia, currentPeriod: Period): boolean {
+  checkRequired(materia: Materia, currentPeriod: Period): boolean {
     if (!materia.parents.length) {
       return true;
     }
@@ -114,5 +114,33 @@ export class PeriodCollection extends Array<Period> {
         }
       });
     });
+  }
+
+  addSemester(period: Period) {
+    const index = this.indexOf(period);
+
+    for (let i = index; i < this.length; i++) {
+      this[i].date = this[i].date.addSemester();
+
+      if (i < this.length - 1) {
+        if (!this[i].date.isSame(this[i + 1].date)) {
+          return;
+        }
+      }
+    }
+  }
+
+  subSemester(period: Period) {
+    const index = this.indexOf(period);
+
+    for (let i = index; i >= 0; i--) {
+      this[i].date = this[i].date.subSemester();
+
+      if (i > 0) {
+        if (!this[i].date.isSame(this[i - 1].date)) {
+          return;
+        }
+      }
+    }
   }
 }

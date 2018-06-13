@@ -1,14 +1,24 @@
 <div class="period-table-header">
+  <button
+    class="btn"
+    (click)="this.periodList.subSemester(this.period)">
+    <fa name="minus"></fa>
+  </button>
   <div class="period-year">
     {{ this.period.date.toString() }}
   </div>
+  <button
+    class="btn"
+    (click)="this.periodList.addSemester(this.period)">
+    <fa name="plus"></fa>
+</button>
 </div>
 
 <table class="table period-table">
   <tbody mwlDroppable
     [ngClass]="{
-      'draggable': draggable === true,
-      'not-draggable': draggable === false
+      'droppable': droppable === true,
+      'not-droppable': droppable === false
     }"
     (drop)="onDrop($event)"
     (dragEnter)="onDragEnter($event)"

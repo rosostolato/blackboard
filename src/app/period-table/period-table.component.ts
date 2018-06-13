@@ -12,7 +12,7 @@ export class PeriodTableComponent implements OnInit {
   @Input() period: Period;
   @Input() periodList: PeriodCollection;
 
-  draggable: boolean = null;
+  droppable: boolean = null;
 
   ngOnInit() {
   }
@@ -25,17 +25,17 @@ export class PeriodTableComponent implements OnInit {
       this.period.push(materia);
     }
 
-    this.draggable = null;
+    this.droppable = null;
   }
 
   onDragEnter(drop: DropData) {
     const materia: Materia = drop.dropData;
     materia.canDrop = this.periodList.checkRequired(materia, this.period);
-    this.draggable = materia.canDrop;
+    this.droppable = materia.canDrop;
   }
 
   onDragLeave(drop: DropData) {
-    this.draggable = null;
+    this.droppable = null;
   }
 
   onRemove(materia: Materia) {
