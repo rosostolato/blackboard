@@ -2,17 +2,17 @@ import * as _ from 'lodash';
 import { Subject } from 'rxjs';
 
 export interface IMateriaParsed {
-  id: string;
-  period: string;
-  name: string;
-  required: string;
+  codigo: string;
+  periodo: string;
+  nome: string;
+  req: string;
 }
 
 export class Materia {
-  id: number;
+  id: string;
   period: number;
   name: string;
-  required: number[];
+  required: string[];
 
   // meta
   parents: Materia[] = [];
@@ -23,10 +23,16 @@ export class Materia {
   canDrop = false;
 
   constructor (obj: IMateriaParsed) {
-    this.name = obj.name;
-    this.id = parseInt(obj.id, null);
-    this.period = parseInt(obj.period, null);
-    this.required = JSON.parse(`[${obj.required}]`);
+    this.id = obj.codigo;
+    this.name = obj.nome;
+    this.period = parseInt(obj.periodo, null);
+
+    const aux = obj.req
+      .replace(/\s/g, '').split(',')
+      .map(str => str ? `"${str}"` : str)
+      .join(',');
+
+    this.required = JSON.parse(`[${ aux }]`);
   }
 }
 

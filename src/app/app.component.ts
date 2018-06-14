@@ -40,80 +40,94 @@ export class AppComponent {
    * o arquvio de csv com os dados das matérias
    */
   private preLoad() {
-    const str = `id;period;name;required
-    1;1;Química;
-    2;1;Química Experimental;
-    3;1;Álgebra Linear e Geom. Analít. I;
-    4;1;Cálculo I;
-    5;1;Informática;
-    6;1;Introdução à Engenharia de Controle e Automação;
-    7;1;Algoritmos e Técnicas de Programação;
-    8;2;Cálculo II;4
-    9;2;Física I;3,4
-    10;2;Física Experimental I;
-    11;2;Álgebra Linear e Geom. Analit. II;3
-    12;2;Introdução a Ciências dos Materiais;1
-    13;2;Probabilidade e Estatística;4
-    14;2;Programação de Computadores;7
-    15;3;Cálculo III;8
-    16;3;Física II;8,9
-    17;3;Física Experimental II;
-    18;3;Equações Diferenciais;4,11
-    19;3;Desenho Técnico para a Engenharia;
-    20;3;Cálculo Numérico;7
-    21;3;Estrutura de Dados;14
-    22;4;Cálculo IV;15
-    23;4;Mecânica/Estática;3,9
-    24;4;Física III;15,16
-    25;4;Física Experimental III;
-    26;4;Fenômenos de Transporte;4, 8
-    27;4;Ciências do Ambiente;
-    28;4;Instrumentação Industrial;
-    29;4;Técnicas e Sistemas Digitais;
-    30;4;Laboratório de Técnicas e Sistemas Digitais;
-    31;5;Física IV;24
-    32;5;Termodinâmica;16
-    33;5;Mecânica dos Sólidos;23
-    34;5;Circuitos Elétricos I;24
-    35;5;Arquitetura e Fundamentos de Computadores;29
-    36;5;Modelagem de Sistemas Dinâmicos;11,22
-    37;5;Equipamentos e Processos Ind.;28
-    38;5;Laboratório de Eletrônica I;34
-    39;5;Eletrônica I;34
-    40;6;Eletricidade Aplicada;24
-    41;6;Eletrônica II;34
-    42;6;Laboratório de Eletrônica II;
-    43;6;Circuitos Elétricos II;22,34
-    44;6;Microprocessadores e Microcontroladores;35
-    45;6;Controle Clássico;36
-    46;6;Sistemas de Transdução;
-    47;6;Comunicação de Dados;14,35
-    48;7;Expressão Oral e Escrita;
-    49;7;Controle Moderno;45
-    50;7;Processamento de Sinais;
-    51;7;Eletricidade Industrial;43
-    52;7;Sistemas Pneumáticos para Automação;26
-    53;7;Robótica Ind.;14,33
-    54;7;Controladores Lógicos Programáveis;14,37,46
-    55;7;Lab. de Controladores Lógicos Programáveis;
-    56;8;Economia;
-    57;8;Metodologia Científica e Tecnológica;48
-    58;8;Sistemas Hidráulico para Automação;52
-    59;8;Elementos Finais de Controle;28
-    60;8;Protocolos de Redes Industriais;47
-    61;8;Lab. de Controle I;45
-    62;8;Controle Digital;45
-    63;8;Sistemas Supervisórios de Processos Industriais;54
-    64;8;Teoria Geral da Administração;
-    65;9;Direito do Tabalho;
-    66;9;Segurança e Higiene no Trabalho;
-    67;9;Lab. de Controle II;61
-    68;9;Projeto Final de Curso I;
-    69;10;Gestão Ambiental;
-    70;10;Gerência de Projetos;
-    71;10;Projeto Final de Curso II;
-    72;10;Controle Avançado;49
-    73;10;Programação Econômica e Financeira;`;
+    const str = `periodo;codigo;nome;ch;req
+    1;CES.321;Álgebra Linear e Geometria Analítica I;80;
+    1;CES.325;Algoritmos e Técnicas de Programação;80;
+    1;CES.001;Cálculo I;120;
+    1;CES.323;Informática;60;
+    1;CES.324;Introdução à Engenharia de Controle e Automação;40;
+    1;CES.319;Química;60;
+    1;CES.320;Química Experimental;40;
+    2;CES.418;Álgebra Linear e Geometria Analítica II;80; CES.321
+    2;CES.094;Cálculo II;80; CES.001
+    2;CES.086;Física Experimental I;40;
+    2;CES.179;Física I;80; CES.001, CES.321
+    2;CES.326;Introdução a Ciências dos Materiais;60; CES.319
+    2;CES.327;Probabilidade e Estatística;60; CES.001
+    2;CES.258;Programação de Computadores;80; CES.325
+    3;CES.191;Cálculo III;80; CES.094
+    3;CES.197;Cálculo Numérico;80; CES.325
+    3;CES.329;Desenho Técnico para Engenharia;80;
+    3;CES.328;Equações Diferenciais;80; CES.001, CES.418
+    3;CES.195;Estrutura de Dados;80; CES.258
+    3;CES.184;Física Experimental II;40;
+    3;CES.183;Física II;80; CES.094, CES.179
+    4;CES.200;Cálculo IV;80; CES.191
+    4;CES.331;Ciências do Ambiente;40;
+    4;CES.215;Fenômenos de Transporte;80; CES.001, CES.183
+    4;CES.193;Física Experimental III;40;
+    4;CES.192;Física III;80; CES.183, CES.191
+    4;CES.211;Instrumentação Industrial;80;
+    4;CES.333;Laboratório de Técnicas e Sistemas Digitais;40;
+    4;CES.330;Mecânica/estática;60; CES.179, CES.321
+    4;CES.332;Técnicas e Sistemas Digitais;60;
+    5;CES.336;Arquitetura e Fundamentos de Computadores;60; CES.332
+    5;CES.207;Circuitos Elétricos I;80; CES.192
+    5;CES.340;Eletrônica I;60;
+    5;CES.338;Equipamentos e Processos Industriais;80; CES.211
+    5;CES.202;Física IV;80; CES.192
+    5;CES.339;Laboratório de Eletrônica I;40;
+    5;CES.335;Mecânica dos Sólidos;80; CES.330
+    5;CES.337;Modelagem de Sistemas Dinâmicos;80; CES.200, CES.418
+    5;CES.334;Termodinâmica;60; CES.183
+    6;CES.210;Circuitos Elétricos II;80; CES.200, CES.207
+    6;CES.347;Comunicação de Dados;60; CES.258, CES.336
+    6;CES.345;Controle Clássico;80; CES.337
+    6;CES.341;Eletricidade Aplicada;60; CES.192
+    6;CES.342;Eletrônica II;60; CES.340
+    6;CES.343;Laboratório de Eletrônica II;40;
+    6;CES.344;Microprocessadores e Microcontroladores;80; CES.336
+    6;CES.222;Sistemas de Transdução;60;
+    7;CES.351;Controladores Lógicos Programáveis;60; CES.222, CES.325, CES.338
+    7;CES.348;Controle Moderno;80; CES.345
+    7;CES.214;Eletricidade Industrial;80; CES.341
+    7;CES.250;Expressão Oral e Escrita;40;
+    7;CES.352;Laboratório de Controladores Lógicos Programáveis;40;
+    7;CES.349;Processamento de Sinais;80; CES.337
+    7;CES.350;Robótica Industrial;80; CES.325, CES.335
+    7;CES.227;Sistemas Pneumáticos para Automação;80; CES.215
+    8;CES.228;Controle Digital;80; CES.345, CES.348
+    8;CES.353;Economia;40;
+    8;CES.356;Elementos Finais de Controle;60; CES.211
+    8;CES.358;Laboratório de Controle I;80; CES.345, CES.349
+    8;CES.354;Metodologia Científica e Tecnológica;40; CES.250
+    8;CES.357;Protocolo de Redes Industriais;80; CES.347
+    8;CES.355;Sistemas Hidráulicos para Automação;80; CES.227
+    8;CES.233;Sistemas Supervisórios de Processos Industriais;80; CES.351
+    9;CES.360;Direito do Trabalho;60;
+    9;CES.362;Laboratório de Controle II;80; CES.228, CES.358
+    9;CES.363;Projeto Final de Curso I;40;
+    9;CES.361;Segurança e Higiene no Trabalho;60;
+    9;CES.359;Teoria Geral da Administração;60;
+    10;CES.229;Controle Avançado;80; CES.348
+    10;CES.365;Gerência de Projetos;40;
+    10;CES.364;Gestão Ambiental;60;
+    10;CES.242;Programação Econômica e Financeira;80;
+    10;CES.366;Projeto Final de Curso II;40;
+    11;CES.368;Controle de Máquinas Elétricas;80; CES.228
+    11;CES.161;Elementos Finitos;80; CES.197
+    11;CES.254;Geoprocessamento;80;
+    11;CES.164;Hidráulica Avançada;80;
+    11;CES.370;Instalações de Equipamentos Elétricos em Atmosfera Explosiva;60;
+    11;CES.163;Inteligência Artificial;80;
+    11;CES.252;Interligações Submarinas;80;
+    11;CES.162;Introdução à Economia do Petróleo;80;
+    11;CES.256;Libras;40;
+    11;CES.165;Processos Químicos e Petroquímicos;80;
+    11;CES.166;Programação Orientada a Eventos;80;
+    11;CES.367;Sistemas Automáticos de Árvore de Natal;80;
+    11;CES.251;Tópicos Especiais em Desenho Técnico Avançado;40;
+    11;CES.253;Valoração Econômica Ambiental;40;`;
 
     this.papa.parse(str, {
       header: true,
