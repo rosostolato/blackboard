@@ -16,12 +16,14 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { AppComponent } from './app.component';
 import { PeriodTableComponent } from './period-table/period-table.component';
 import { MateriasTableComponent } from './materias-table/materias-table.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PeriodTableComponent,
-    MateriasTableComponent
+    MateriasTableComponent,
+    SidebarComponent
   ],
   imports: [
     MatListModule,

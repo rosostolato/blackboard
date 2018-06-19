@@ -1,0 +1,18 @@
+.sidebar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 20px;
+
+  background: white;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+
+  .sidebar-action {
+    display: flex;
+    width: 20px;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+  }
+}

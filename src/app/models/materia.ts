@@ -87,9 +87,13 @@ export class MateriaCollection extends Array<Materia> {
       .period;
   }
 
-  public sortById() {
-    this.sort((a, b) => a.id - b.id);
-  }
+  // public sortById() {
+  //   this.sort((a, b) => {
+  //     if (a < b) { return -1; }
+  //     if (a > b) { return 1; }
+  //     return 0;
+  //   });
+  // }
 
   public toArray() {
     return new Array(...this);
