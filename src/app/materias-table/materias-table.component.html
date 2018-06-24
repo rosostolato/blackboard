@@ -5,9 +5,8 @@
       <mat-list-item
         class="row" dragActiveClass="ghost-drag"
         *ngFor="let mat of period"
-        mwlDraggable [dropData]="mat"
-        (dragStart)="this.dragStart.emit(null)"
-        [validateDrag]="validateDrag">
+        mwlDraggable [dropData]="mat" [validateDrag]="validateDrag"
+        (dragStart)="this.dragStart.emit(null); preventScroll = true">
         <fa name="bars" class="col-lg-1 col-2"></fa>
         <span class="col-lg-10 col-8">{{ mat.name }}</span>
 

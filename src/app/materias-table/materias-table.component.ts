@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { MateriaCollection, Materia } from '../models/materia';
 import { NgbTooltip } from '@ng-bootstrap/ng-bootstrap';
 import { ValidateDrag } from 'angular-draggable-droppable/draggable.directive';
+import { fromEvent } from 'rxjs';
 
 @Component({
   selector: 'app-materias-table',
@@ -14,6 +15,20 @@ export class MateriasTableComponent implements OnInit {
 
   @Output() dragStart: EventEmitter<any> = new EventEmitter();
   @Input() validateDrag: ValidateDrag;
+
+  preventScroll = false;
+
+  constructor() {
+    document.body.addEventListener('touchmove', (e: TouchEvent) => {
+      if (this.preventScroll) {
+        e.preventDefault();
+      }
+    }, {passive: false});
+
+    document.body.addEventListener('touchend', (e: TouchEvent) => {
+      this.preventScroll = false;
+    });
+  }
 
   ngOnInit() {
     this.materiaList.forEach((mat, index, arr) => {

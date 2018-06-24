@@ -62,5 +62,6 @@ export class SidebarComponent implements OnInit {
 
   validateDrag(coord: Coordinates) {
     // TODO: validar depois de 3 segundos
+    return true;
   }
 }
