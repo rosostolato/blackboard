@@ -1,6 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { MateriaCollection, Materia } from '../models/materia';
 import { NgbTooltip } from '@ng-bootstrap/ng-bootstrap';
+import { ValidateDrag } from 'angular-draggable-droppable/draggable.directive';
 
 @Component({
   selector: 'app-materias-table',
@@ -10,6 +11,9 @@ import { NgbTooltip } from '@ng-bootstrap/ng-bootstrap';
 export class MateriasTableComponent implements OnInit {
   @Input() materiaList: MateriaCollection;
   periods: MateriaCollection[];
+
+  @Output() dragStart: EventEmitter<any> = new EventEmitter();
+  @Input() validateDrag: ValidateDrag;
 
   ngOnInit() {
     this.materiaList.forEach((mat, index, arr) => {
@@ -44,7 +48,7 @@ export class MateriasTableComponent implements OnInit {
 
   mouseEvent(event: string, tip: NgbTooltip, mat: Materia) {
     if (!mat.parents.length && !mat.children.length) {
-      return false;
+      return;
     }
 
     if (event === 'over') {

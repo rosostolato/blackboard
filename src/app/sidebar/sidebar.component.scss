@@ -1,10 +1,15 @@
 .sidebar {
   position: fixed;
-  top: 0;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-box;
+  display: box;
+  width: 20px;
   bottom: 0;
   right: 0;
-  width: 20px;
+  top: 0;
 
+  transition: width 0.2s ease-out;
   background: white;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 

@@ -1,5 +1,10 @@
-<div class="sidebar">
-  <div class="sidebar-action">
+<div class="sidebar" [ngStyle]="{width: getWidth()}">
+  <div class="sidebar-action" (touchstart)="onclick($event)" (touchend)="onrelease()">
     <fa name="chevron-left"></fa>
   </div>
+  <app-materias-table
+    [materiaList]="materiaList"
+    (dragStart)="close()"
+    [validateDrag]="validateDrag">
+  </app-materias-table>
 </div>
