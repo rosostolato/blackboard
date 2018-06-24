@@ -1,6 +1,6 @@
 <div class="sidebar" [ngStyle]="{width: getWidth()}">
   <div class="sidebar-action" (touchstart)="onclick($event)" (touchend)="onrelease()">
-    <fa name="chevron-left"></fa>
+    <fa name="chevron-left" [ngStyle]="{transform: getRotation()}"></fa>
   </div>
   <app-materias-table
     [materiaList]="materiaList"

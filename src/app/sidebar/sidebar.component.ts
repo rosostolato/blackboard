@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { fromEvent, Observable, Subscription } from 'rxjs';
+import { fromEvent, Subscription } from 'rxjs';
 import { MateriaCollection } from '../models/materia';
 
 @Component({
@@ -8,17 +8,14 @@ import { MateriaCollection } from '../models/materia';
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent implements OnInit {
-  private obs: Observable<Event>;
+  private obs = fromEvent(document.body, 'touchmove');
   private sub: Subscription;
+
   private lastPos: number;
-  private width: number;
+  private width = 20;
+  isOpen = false;
 
   @Input() materiaList: MateriaCollection;
-
-  constructor () {
-    this.obs = fromEvent(document.body, 'touchmove');
-    this.width = 20;
-  }
 
   ngOnInit() {
   }
@@ -28,8 +25,10 @@ export class SidebarComponent implements OnInit {
 
     if (this.width > screen.width / 3) {
       this.width = screen.width - 20;
+      this.isOpen = true;
     } else {
       this.width = 20;
+      this.isOpen = false;
     }
   }
 
@@ -54,10 +53,15 @@ export class SidebarComponent implements OnInit {
 
   close() {
     this.width = 20;
+    this.isOpen = false;
   }
 
   getWidth() {
     return `${this.width}px`;
+  }
+
+  getRotation() {
+    return `rotate(${180 * (this.width - 20) / (screen.width - 40)}deg)`;
   }
 
   validateDrag(coord: Coordinates) {
