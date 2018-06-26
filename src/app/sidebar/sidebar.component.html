@@ -1,4 +1,4 @@
-<div class="sidebar" [ngStyle]="{width: getWidth()}">
+<div class="sidebar" [ngStyle]="{width: getWidth()}" [ngClass]="{dragging: dragging}">
   <div class="sidebar-action" (touchstart)="onclick($event)" (touchend)="onrelease()">
     <fa name="chevron-left" [ngStyle]="{transform: getRotation()}"></fa>
   </div>

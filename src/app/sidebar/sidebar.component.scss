@@ -4,7 +4,7 @@
   display: -moz-box;
   display: -ms-box;
   display: box;
-  width: 20px;
+  width: 25px;
   bottom: 0;
   right: 0;
   top: 0;
@@ -13,9 +13,13 @@
   background: white;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 
+  &.dragging {
+    transition: width 0s;
+  }
+
   .sidebar-action {
     display: flex;
-    width: 20px;
+    width: 25px;
     height: 100vh;
     align-items: center;
     justify-content: center;

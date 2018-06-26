@@ -12,27 +12,19 @@ export class SidebarComponent implements OnInit {
   private sub: Subscription;
 
   private lastPos: number;
-  private width = 20;
+  private width = 25;
+
   isOpen = false;
+  dragging = false;
 
   @Input() materiaList: MateriaCollection;
 
   ngOnInit() {
   }
 
-  onrelease() {
-    this.sub.unsubscribe();
-
-    if (this.width > screen.width / 3) {
-      this.width = screen.width - 20;
-      this.isOpen = true;
-    } else {
-      this.width = 20;
-      this.isOpen = false;
-    }
-  }
-
   onclick(event: TouchEvent) {
+    this.dragging = true;
+
     if (this.sub) {
       this.sub.unsubscribe();
       this.sub = null;
@@ -51,8 +43,21 @@ export class SidebarComponent implements OnInit {
     this.width = Math.min(screen.width - 20, this.width);
   }
 
+  onrelease() {
+    this.dragging = false;
+    this.sub.unsubscribe();
+
+    if (this.width > screen.width / 3) {
+      this.width = screen.width - 20;
+      this.isOpen = true;
+    } else {
+      this.width = 25;
+      this.isOpen = false;
+    }
+  }
+
   close() {
-    this.width = 20;
+    this.width = 25;
     this.isOpen = false;
   }
 
