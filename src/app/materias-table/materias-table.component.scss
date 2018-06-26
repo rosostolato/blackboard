@@ -15,8 +15,10 @@
     color: #777;
   }
 
-  .mat-list {
-    min-width: 90.625vw;
+  @media screen and (max-width: 500px) {
+    .mat-list {
+      min-width: 90.625vw;
+    }
   }
 }
 

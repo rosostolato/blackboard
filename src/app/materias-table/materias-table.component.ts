@@ -10,24 +10,23 @@ import { fromEvent } from 'rxjs';
   styleUrls: ['./materias-table.component.scss']
 })
 export class MateriasTableComponent implements OnInit {
-  @Input() materiaList: MateriaCollection;
   periods: MateriaCollection[];
-
+  @Input() materiaList: MateriaCollection;
   @Output() dragStart: EventEmitter<any> = new EventEmitter();
-  @Input() validateDrag: ValidateDrag;
 
-  preventScroll = false;
+  private timer: NodeJS.Timer;
+  private canDrag: boolean;
 
   constructor() {
-    document.body.addEventListener('touchmove', (e: TouchEvent) => {
-      if (this.preventScroll) {
-        e.preventDefault();
-      }
-    }, {passive: false});
+    // document.body.addEventListener('touchmove', (e: TouchEvent) => {
+    //   if (this.preventScroll) {
+    //     e.preventDefault();
+    //   }
+    // }, {passive: false});
 
-    document.body.addEventListener('touchend', (e: TouchEvent) => {
-      this.preventScroll = false;
-    });
+    // document.body.addEventListener('touchend', (e: TouchEvent) => {
+    //   this.preventScroll = false;
+    // });
   }
 
   ngOnInit() {
@@ -41,7 +40,6 @@ export class MateriasTableComponent implements OnInit {
 
           case 'removed':
           arr.push(mat);
-          // this.materiaList.sortById();
           break;
         }
       });
@@ -73,5 +71,22 @@ export class MateriasTableComponent implements OnInit {
     if (event === 'leave') {
       tip.close();
     }
+  }
+
+  onTouch($event) {
+    this.canDrag = screen.width > 500;
+
+    this.timer = setTimeout(() => {
+      this.canDrag = true;
+    }, 1000);
+  }
+
+  validate(coordinates: Coordinates) {
+    if (!this.canDrag) {
+      clearTimeout(this.timer);
+      return false;
+    }
+
+    return true;
   }
 }

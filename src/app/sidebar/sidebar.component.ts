@@ -8,16 +8,15 @@ import { MateriaCollection } from '../models/materia';
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent implements OnInit {
+  @Input() materiaList: MateriaCollection;
+
   private obs = fromEvent(document.body, 'touchmove');
   private sub: Subscription;
-
   private lastPos: number;
   private width = 25;
 
   isOpen = false;
   dragging = false;
-
-  @Input() materiaList: MateriaCollection;
 
   ngOnInit() {
   }
@@ -67,10 +66,5 @@ export class SidebarComponent implements OnInit {
 
   getRotation() {
     return `rotate(${180 * (this.width - 20) / (screen.width - 40)}deg)`;
-  }
-
-  validateDrag(coord: Coordinates) {
-    // TODO: validar depois de 3 segundos
-    return true;
   }
 }

@@ -2,22 +2,25 @@
   <mat-list>
     <div *ngFor="let period of materiaList.groupByPeriod(); trackBy: trackBy">
       <p matSubheader>{{ period.periods }}º Período</p>
-      <mat-list-item class="row"
-        *ngFor="let mat of period"
-        dragActiveClass="ghost-drag"
-        mwlDraggable [dropData]="mat" [validateDrag]="validateDrag"
-        (dragStart)="this.dragStart.emit(null); preventScroll = true">
+
+      <mat-list-item
+        mwlDraggable class="row"
+        *ngFor="let mat of period; trackBy: trackBy"
+        dragActiveClass="ghost-drag" [dropData]="mat"
+        (dragStart)="dragStart.emit($event)"
+        (dragPointerDown)="onTouch($event)"
+        [validateDrag]="validate.bind(this)">
         <fa name="bars" class="col-lg-1 col-2 d-none d-sm-block"></fa>
         <span class="col-lg-10 col-9">{{ mat.name }}</span>
 
         <ng-template #requireds>
           <div *ngIf="mat.parents.length">
             <span>Pré-requisitos:</span><br>
-            <div *ngFor="let req of mat.parents">{{ req.name }}<br></div>
+            <div *ngFor="let req of mat.parents; trackBy: trackBy">{{ req.name }}<br></div>
           </div>
           <div *ngIf="mat.children.length">
             <span>Pós-requisitos:</span><br>
-            <div *ngFor="let req of mat.children">{{ req.name }}<br></div>
+            <div *ngFor="let req of mat.children; trackBy: trackBy">{{ req.name }}<br></div>
           </div>
         </ng-template>
 

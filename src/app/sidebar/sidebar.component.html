@@ -3,8 +3,7 @@
     <fa name="chevron-left" [ngStyle]="{transform: getRotation()}"></fa>
   </div>
   <app-materias-table
-    [materiaList]="materiaList"
     (dragStart)="close()"
-    [validateDrag]="validateDrag">
+    [materiaList]="materiaList">
   </app-materias-table>
 </div>

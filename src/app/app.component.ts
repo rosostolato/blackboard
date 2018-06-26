@@ -17,7 +17,7 @@ export class AppComponent {
     this.preLoad();
   }
 
-  isXS() {
+  isMobile() {
     return screen.width < 500;
   }
 
