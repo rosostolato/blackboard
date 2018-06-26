@@ -1,12 +1,8 @@
 .materias-container {
-  position: -webkit-sticky;
-  position:    -moz-sticky;
-  position:     -ms-sticky;
-  position:      -o-sticky;
-  position:         sticky;
-
+  user-select: none;
   overflow-x: hidden;
   overflow-y: auto;
+  position: sticky;
   height: 100vh;
   width: 100%;
   top: 0;
