@@ -53,12 +53,13 @@
       </app-period-table>
     </div>
     <app-materias-table
-      [materiaList]="materiaList"
-      class="col-6 d-none d-sm-block">
+      *ngIf="!isXS()" class="col-6"
+      [materiaList]="materiaList">
     </app-materias-table>
   </div>
 </div>
 
 <app-sidebar
+  *ngIf="isXS()"
   [materiaList]="materiaList">
 </app-sidebar>

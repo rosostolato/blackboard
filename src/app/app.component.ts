@@ -17,6 +17,10 @@ export class AppComponent {
     this.preLoad();
   }
 
+  isXS() {
+    return screen.width < 500;
+  }
+
   public onUpload(fileList: FileList) {
     const file = fileList[0];
 
