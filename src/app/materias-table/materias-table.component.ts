@@ -1,7 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { MateriaCollection, Materia } from '../models/materia';
 import { NgbTooltip } from '@ng-bootstrap/ng-bootstrap';
-import { DragStart } from 'angular-draggable-droppable/draggable.directive';
 
 @Component({
   selector: 'app-materias-table',
@@ -11,7 +10,7 @@ import { DragStart } from 'angular-draggable-droppable/draggable.directive';
 export class MateriasTableComponent implements OnInit {
   periods: MateriaCollection[];
   @Input() materiaList: MateriaCollection;
-  @Output() dragStart: EventEmitter<DragStart> = new EventEmitter();
+  @Output() dragStart: EventEmitter<any> = new EventEmitter();
 
   private timeout: any;
   private canDrag: boolean;
@@ -59,21 +58,21 @@ export class MateriasTableComponent implements OnInit {
       : mat.period;
   }
 
-  mouseEvent(event: string, tip: NgbTooltip, mat: Materia) {
+  mouseEvent(event: string, tooltip: NgbTooltip, mat: Materia) {
     if (!mat.parents.length && !mat.children.length) {
       return;
     }
 
     if (event === 'over') {
-      tip.open();
+      tooltip.open();
     }
 
     if (event === 'leave') {
-      tip.close();
+      tooltip.close();
     }
   }
 
-  onTouch($event: DragStart) {
+  onTouch($event) {
     this.canDrag = screen.width > 500;
 
     this.timeout = setTimeout(() => {

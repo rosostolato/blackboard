@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { DropData } from 'angular-draggable-droppable/droppable.directive';
 import { Period, PeriodCollection } from '../models/period';
 import { Materia } from '../models/materia';
 
@@ -17,7 +16,7 @@ export class PeriodTableComponent implements OnInit {
   ngOnInit() {
   }
 
-  onDrop(drop: DropData) {
+  onDrop(drop) {
     const materia: Materia = drop.dropData;
 
     if (materia.canDrop) {
@@ -28,13 +27,13 @@ export class PeriodTableComponent implements OnInit {
     this.droppable = null;
   }
 
-  onDragEnter(drop: DropData) {
+  onDragEnter(drop) {
     const materia: Materia = drop.dropData;
     materia.canDrop = this.periodList.checkRequired(materia, this.period);
     this.droppable = materia.canDrop;
   }
 
-  onDragLeave(drop: DropData) {
+  onDragLeave(drop) {
     this.droppable = null;
   }
 
