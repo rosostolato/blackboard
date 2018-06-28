@@ -11,10 +11,19 @@
     color: #777;
   }
 
-  @media screen and (max-width: 500px) {
-    .mat-list {
+  .mat-list {
+    @media screen and (max-width: 500px) {
       min-width: 90.625vw;
     }
+  }
+
+  .touch-progress {
+    position: absolute;
+    background-color: black;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 2px;
   }
 }
 
@@ -22,4 +31,11 @@
   background: white;
   border: 1px solid #CCC;
   z-index: 100;
+}
+
+@keyframes click-effect{
+	100%{
+    opacity: 0;
+    transform: scale(2.5);
+  }
 }

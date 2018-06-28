@@ -1,8 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { MateriaCollection, Materia } from '../models/materia';
 import { NgbTooltip } from '@ng-bootstrap/ng-bootstrap';
-import { ValidateDrag } from 'angular-draggable-droppable/draggable.directive';
-import { fromEvent } from 'rxjs';
+import { DragStart } from 'angular-draggable-droppable/draggable.directive';
 
 @Component({
   selector: 'app-materias-table',
@@ -12,21 +11,22 @@ import { fromEvent } from 'rxjs';
 export class MateriasTableComponent implements OnInit {
   periods: MateriaCollection[];
   @Input() materiaList: MateriaCollection;
-  @Output() dragStart: EventEmitter<any> = new EventEmitter();
+  @Output() dragStart: EventEmitter<DragStart> = new EventEmitter();
 
-  private timer: NodeJS.Timer;
   private canDrag: boolean;
+  private preventScroll: boolean;
+  private timeout: NodeJS.Timer;
 
   constructor() {
-    // document.body.addEventListener('touchmove', (e: TouchEvent) => {
-    //   if (this.preventScroll) {
-    //     e.preventDefault();
-    //   }
-    // }, {passive: false});
+    document.body.addEventListener('touchmove', (e: TouchEvent) => {
+      if (this.preventScroll) {
+        e.preventDefault();
+      }
+    }, {passive: false});
 
-    // document.body.addEventListener('touchend', (e: TouchEvent) => {
-    //   this.preventScroll = false;
-    // });
+    document.body.addEventListener('touchend', (e: TouchEvent) => {
+      this.preventScroll = false;
+    });
   }
 
   ngOnInit() {
@@ -73,20 +73,20 @@ export class MateriasTableComponent implements OnInit {
     }
   }
 
-  onTouch($event) {
+  onTouch($event: DragStart) {
     this.canDrag = screen.width > 500;
 
-    this.timer = setTimeout(() => {
+    this.timeout = setTimeout(() => {
       this.canDrag = true;
-    }, 1000);
+      this.preventScroll = true;
+    }, 500);
   }
 
   validate(coordinates: Coordinates) {
     if (!this.canDrag) {
-      clearTimeout(this.timer);
+      clearTimeout(this.timeout);
       return false;
     }
-
     return true;
   }
 }

@@ -4,14 +4,16 @@
       <p matSubheader>{{ period.periods }}º Período</p>
 
       <mat-list-item
+        appClickEffect
         mwlDraggable class="row"
         *ngFor="let mat of period; trackBy: trackBy"
         dragActiveClass="ghost-drag" [dropData]="mat"
         (dragStart)="dragStart.emit($event)"
         (dragPointerDown)="onTouch($event)"
         [validateDrag]="validate.bind(this)">
-        <fa name="bars" class="col-lg-1 col-2 d-none d-sm-block"></fa>
-        <span class="col-lg-10 col-9">{{ mat.name }}</span>
+
+        <fa name="bars" class="col-1"></fa>
+        <span class="col-sm-10 col-11">{{ mat.name }}</span>
 
         <ng-template #requireds>
           <div *ngIf="mat.parents.length">
@@ -24,7 +26,7 @@
           </div>
         </ng-template>
 
-        <div class="col-lg-1 col-2 text-center"
+        <div class="col-1 d-none d-sm-block text-center"
           container="body" placement="right" #tip="ngbTooltip"
           [ngbTooltip]="requireds" triggers="manual"
           (mouseover)="mouseEvent('over', tip, mat)"
