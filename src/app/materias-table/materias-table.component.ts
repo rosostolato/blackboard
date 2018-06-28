@@ -13,9 +13,9 @@ export class MateriasTableComponent implements OnInit {
   @Input() materiaList: MateriaCollection;
   @Output() dragStart: EventEmitter<DragStart> = new EventEmitter();
 
+  private timeout: any;
   private canDrag: boolean;
   private preventScroll: boolean;
-  private timeout: NodeJS.Timer;
 
   constructor() {
     document.body.addEventListener('touchmove', (e: TouchEvent) => {
